@@ -521,22 +521,121 @@ button { font: inherit; background: none; border: 0; color: inherit; cursor: poi
 
 /* ---------------------------------------------------------- responsive */
 @media (max-width: 760px) {
-  .tech__stage { gap: 8px; }
-  .tech__arrow { width: 38px; height: 38px; }
-  .header__inner { padding: 12px 16px; gap: 14px; flex-wrap: wrap; }
-  .nav { order: 3; flex-basis: 100%; justify-content: space-between; gap: 8px; margin-left: 0; }
+  body {
+    -webkit-tap-highlight-color: transparent;
+    font-size: 16px;
+  }
+  a, button { touch-action: manipulation; }
+
+  /* header / nav */
+  .header__inner {
+    padding: calc(10px + env(safe-area-inset-top)) 16px 10px;
+    gap: 10px 14px;
+    flex-wrap: wrap;
+  }
+  .brand__name { font-size: 20px; }
+  .nav { order: 3; flex-basis: 100%; justify-content: space-between; gap: 6px; margin-left: 0; }
+  .nav a { font-size: 14px; letter-spacing: 0.01em; white-space: nowrap; }
   .header .btn--ghost { margin-left: 0; }
-  .hero { padding-top: 70px; }
-  .service { grid-template-columns: 1fr; padding: 22px 18px; gap: 6px; }
+  .header .btn--small { padding: 8px 14px; font-size: 13px; }
+
+  /* hero */
+  .hero {
+    padding: clamp(64px, 15vw, 92px) 20px 56px;
+  }
+  .hero__logo img { height: clamp(110px, 26vw, 160px); }
+  .hero__title { font-size: clamp(36px, 10.5vw, 52px); }
+  .hero__sub { font-size: 16px; margin-top: 20px; }
+  .hero__actions { flex-direction: column; align-items: stretch; gap: 12px; margin-top: 30px; }
+  .hero__actions .btn { width: 100%; text-align: center; justify-content: center; }
+  .hero__meta { margin-top: 32px; font-size: 13px; }
+
+  /* buttons */
+  .btn--big { padding: 16px 22px; font-size: 15.5px; }
+
+  /* section heads */
+  .section-head h2 { font-size: clamp(29px, 8.2vw, 44px); }
+  .section-head p { font-size: 16px; }
+
+  /* services */
+  .services, .tech, .about { padding-left: 18px; padding-right: 18px; }
+  .service { grid-template-columns: 1fr; padding: 22px 16px; gap: 6px; }
   .service__mark { top: 30px; }
+  .service h3 { font-size: clamp(22px, 6.5vw, 27px); }
+  .service p { font-size: 15px; }
+
+  /* tech slider: card full-width, arrows below */
+  .tech__stage { flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
+  .tech__slides { order: 1; flex-basis: 100%; }
+  .tech__arrow { order: 2; width: 46px; height: 46px; margin-top: 0; }
+  .tech__head { padding: 18px; gap: 14px; }
+  .tech__icon { width: 38px; height: 38px; padding: 9px; }
+  .tech__head h3 { font-size: clamp(20px, 6vw, 26px); }
+  .tech__head p { font-size: 13px; }
+  .tech__list { padding: 4px 18px 14px; grid-template-columns: 1fr; }
+  .tech__list li { font-size: 14px; padding: 12px 0 12px 26px; }
+  .tech__list li::before { top: 20px; }
+  .tech__dots { gap: 14px; margin-top: 20px; }
+  .tech__dot { width: 12px; height: 12px; }
+
+  /* about */
   .about__grid { grid-template-columns: 1fr; }
+  .plate { aspect-ratio: 4 / 3; }
+  .plate--wide { aspect-ratio: 16 / 10; }
   .plate--wide img { min-height: 0; }
-  .contact__info { grid-template-columns: 1fr; }
-  .tech__list { grid-template-columns: 1fr; }
+  .about__text { font-size: 16px; margin-top: 32px; }
+
+  /* contact */
+  .contact { padding-left: 18px; padding-right: 18px; }
+  .contact h2 { font-size: clamp(31px, 8.6vw, 46px); }
+  .contact__cta { flex-direction: column; align-items: stretch; gap: 12px; margin-top: 30px; }
+  .contact__cta .btn { width: 100%; text-align: center; }
+  .contact__info { grid-template-columns: 1fr; margin-top: 40px; }
+  .contact__info div { padding: 18px 16px; }
+
+  /* footer */
+  .footer__inner {
+    justify-content: center;
+    text-align: center;
+    padding: 26px 18px calc(26px + env(safe-area-inset-bottom));
+    gap: 8px;
+  }
   .footer__copy { margin-left: 0; }
-  .cine__scene { left: 16px; right: 16px; bottom: 18px; max-width: none; }
-  .cine__side { right: 16px; bottom: 18px; }
-  .cine__tag { left: 16px; top: 16px; }
-  .marquee { margin-top: 40px; }
+
+  /* cine / scroller */
+  .cine { height: 420vh; }
+  .cine__stage { height: 100vh; height: 100dvh; }
+  .cine__tag { left: 16px; top: 16px; font-size: 12px; }
+  .cine__num { font-size: clamp(92px, 32vw, 150px); left: 4px; bottom: -8px; }
+  .cine__scene { left: 16px; right: 16px; bottom: 16px; max-width: none; }
+  .cine__label { padding: 6px 12px; font-size: 12px; letter-spacing: 0.16em; }
+  .cine__big { font-size: clamp(26px, 7.6vw, 34px); margin-top: 12px; }
+  .cine__sub { font-size: 13.5px; margin-top: 10px; }
+  .cine__side { right: 16px; bottom: auto; top: 20px; align-items: flex-end; }
+  .cine__side #cineTime { font-size: 12.5px; }
+  .cine__count { font-size: clamp(24px, 6.4vw, 30px); }
+
+  /* marquee */
+  .marquee { margin-top: 36px; padding: 14px 0; }
   .marquee__phrase { padding-right: 40px; }
+
+  /* totop */
+  .totop {
+    width: 46px; height: 46px;
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 420px) {
+  .brand__name { font-size: 18px; }
+  .header .btn--small { padding: 7px 12px; }
+  .hero__title { font-size: clamp(32px, 10vw, 38px); }
+  .hero__logo img { height: clamp(96px, 26vw, 130px); }
+  .tech__head h3 { font-size: 19px; }
+  .plate--wide { aspect-ratio: 16 / 11; }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 760px) {
+  .cine { height: 100vh; }
 }
