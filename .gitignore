@@ -1,0 +1,18 @@
+# Dependências
+node_modules/
+
+# Build (o Vercel gera na hora do deploy)
+dist/
+
+# Originais do WhatsApp (as versões finais já estão em public/)
+imagens_francar/
+
+# Vercel
+.vercel/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

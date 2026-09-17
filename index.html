@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Francar · Oficina mecânica</title>
+  <meta name="description" content="Oficina mecânica com diagnóstico primeiro. Reparo de motor, suspensão, freios e revisão — consulte pelo WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Francar · Oficina mecânica" />
+  <meta property="og:description" content="Oficina mecânica com diagnóstico primeiro. Reparo de motor, suspensão, freios e revisão — consulte pelo WhatsApp." />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:image" content="/logo.jpeg" />
+  <meta property="og:site_name" content="Francar" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "Francar",
+    "description": "Oficina mecânica com diagnóstico primeiro. Reparo de motor, suspensão, freios e revisão.",
+    "telephone": "+55 63 99230-7887",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Q. 812 Sul, Alameda 1, 437 – Arse",
+      "addressLocality": "Palmas",
+      "addressRegion": "TO",
+      "postalCode": "77023-132",
+      "addressCountry": "BR"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "08:00",
+        "closes": "12:00"
+      }
+    ],
+    "priceRange": "$$",
+    "url": "/"
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f0571f'/%3E%3Ctext x='32' y='46' font-size='42' font-family='Arial,sans-serif' font-weight='900' text-anchor='middle' fill='%23101014'%3EF%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="#inicio">
+        <span class="brand__name">Francar</span>
+      </a>
+      <nav class="nav" aria-label="Seções da página">
+        <a href="#servicos">Serviços</a>
+        <a href="#tecnologias">Tecnologias</a>
+        <a href="#a-oficina">A oficina</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <a class="btn btn--ghost btn--small" href="#" data-wa>WhatsApp</a>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <section class="hero" id="inicio" aria-labelledby="heroTitle">
+      <div class="hero__fx">
+        <div class="hero__logo"><img src="/logo.jpeg" alt="Logotipo da Francar" /></div>
+        <h1 class="hero__title" id="heroTitle">Seu carro bem cuidado,<br />do diagnóstico ao reparo.</h1>
+        <p class="hero__sub">Revisão, manutenção e reparos feitos com atenção em cada detalhe. A gente identifica o problema, explica o serviço e cuida do que realmente precisa ser feito.</p>
+        <div class="hero__actions">
+          <a class="btn btn--big" href="#" data-wa>Chamar no WhatsApp</a>
+          <a class="btn btn--ghost" href="#servicos">Ver os serviços</a>
+        </div>
+        <p class="hero__meta">Seg – Sex, 8h às 19h · Sáb, 8h às 12h</p>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <div class="marquee__group"><span class="marquee__phrase">Especialidade em veículos Honda, porém atendemos outras marcas como Toyota, Hyundai, Chevrolet, Fiat, Jeep, Volks, entre outras.</span></div>
+          <div class="marquee__group"><span class="marquee__phrase">Especialidade em veículos Honda, porém atendemos outras marcas como Toyota, Hyundai, Chevrolet, Fiat, Jeep, Volks, entre outras.</span></div>
+          <div class="marquee__group"><span class="marquee__phrase">Especialidade em veículos Honda, porém atendemos outras marcas como Toyota, Hyundai, Chevrolet, Fiat, Jeep, Volks, entre outras.</span></div>
+          <div class="marquee__group"><span class="marquee__phrase">Especialidade em veículos Honda, porém atendemos outras marcas como Toyota, Hyundai, Chevrolet, Fiat, Jeep, Volks, entre outras.</span></div>
+          <div class="marquee__group"><span class="marquee__phrase">Especialidade em veículos Honda, porém atendemos outras marcas como Toyota, Hyundai, Chevrolet, Fiat, Jeep, Volks, entre outras.</span></div>
+          <div class="marquee__group"><span class="marquee__phrase">Especialidade em veículos Honda, porém atendemos outras marcas como Toyota, Hyundai, Chevrolet, Fiat, Jeep, Volks, entre outras.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cine" id="bancada" aria-label="A bancada em movimento">
+      <div class="cine__stage">
+        <video class="cine__video" id="cineVideo" muted loop playsinline preload="auto" poster="/owner-landscape.jpeg" tabindex="-1" aria-hidden="true" disablePictureInPicture>
+          <source src="/motor.mp4" type="video/mp4" />
+        </video>
+        <div class="cine__loader" id="cineLoader" hidden>
+          <span class="cine__loader__chip">Preparando a animação</span>
+        </div>
+        <p class="cine__fallback" id="cineFallback" hidden>O vídeo não carregou — a bancada, em foto.</p>
+        <p class="cine__tag" id="cineTag">Role para explorar</p>
+        <div class="cine__meta" aria-hidden="true">
+          <span class="cine__num" id="cineNum">01</span>
+          <div class="cine__scene">
+            <p class="cine__label" id="cineLabel">Diagnóstico</p>
+            <p class="cine__big" id="cineBig">Antes de trocar peça, a gente descobre o problema.</p>
+            <p class="cine__sub" id="cineSub">Leitura, teste e análise para chegar na causa certa.</p>
+          </div>
+          <div class="cine__side">
+            <span id="cineTime">00:00 / 00:00</span>
+            <span class="cine__count" id="cineCount">01 / 03</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicos" aria-labelledby="servicosTitle">
+      <div class="section-head reveal">
+        <h2 id="servicosTitle">Serviços para cuidar do seu carro</h2>
+        <p>Do diagnóstico à manutenção, cada serviço é feito com atenção ao que o veículo realmente precisa.</p>
+      </div>
+      <ul class="services__list">
+        <li class="service reveal">
+          <span class="service__mark" aria-hidden="true"></span>
+          <h3>Revisão preventiva</h3>
+          <p>Revisão programada: fluidos, filtros, correias e folgas antes de virarem defeito.</p>
+        </li>
+        <li class="service reveal">
+          <span class="service__mark" aria-hidden="true"></span>
+          <h3>Reparo de motor</h3>
+          <p>Retirada, desmontagem e montagem do motor na bancada, com peça verificada e torque prescrito.</p>
+        </li>
+        <li class="service reveal">
+          <span class="service__mark" aria-hidden="true"></span>
+          <h3>Suspensão e freios</h3>
+          <p>Buchas, amortecedores, pastilhas e discos inspecionados e medidos antes de trocar qualquer peça.</p>
+        </li>
+        <li class="service reveal">
+          <span class="service__mark" aria-hidden="true"></span>
+          <h3>Troca de óleo</h3>
+          <p>Óleo e filtro exatamente na especificação do fabricante do motor.</p>
+        </li>
+        <li class="service reveal">
+          <span class="service__mark" aria-hidden="true"></span>
+          <h3>Diagnóstico de funcionamento</h3>
+          <p>Leitura das falhas, dados em tempo real e teste ativo dos módulos — antes de abrir peça.</p>
+        </li>
+        <li class="service reveal">
+          <span class="service__mark" aria-hidden="true"></span>
+          <h3>Arrefecimento</h3>
+          <p>Vazamentos, pressão, temperatura e atuação da válvula termostática conferidos.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="tech" id="tecnologias" aria-labelledby="techTitle">
+      <div class="section-head reveal">
+        <h2 id="techTitle">Diagnóstico feito por scanner</h2>
+        <p>Antes de desmontar qualquer peça, o carro é avaliado pelos próprios módulos com o scanner Autel MK 808s — as falhas aparecem, não são adivinhadas.</p>
+      </div>
+      <div class="tech__wrap reveal">
+        <div class="tech__stage" id="techStage">
+          <button type="button" class="tech__arrow tech__arrow--prev" data-tech-prev aria-label="Bloco anterior">←</button>
+          <div class="tech__slides">
+          <div class="tech__card tech__slide is-on" data-tech-slide>
+            <header class="tech__head">
+              <svg class="tech__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+              </svg>
+              <div>
+                <h3>Scanner Autel MK 808s</h3>
+                <p>Principais funções</p>
+              </div>
+            </header>
+          <ul class="tech__list">
+            <li>Leitura e apagamento de falhas (DTC) em diversos módulos</li>
+            <li>Dados em tempo real, inclusive em gráfico</li>
+            <li>Leitura de informações da ECU</li>
+            <li>Freeze Frame</li>
+            <li>Teste ativo/bi-direcional — acionar componentes através do scanner</li>
+            <li>Reset de óleo/revisão</li>
+            <li>EPB — manutenção/calibração do freio de estacionamento eletrônico</li>
+            <li>SAS — calibração do sensor de ângulo de direção</li>
+            <li>BMS — registro/reset da bateria</li>
+            <li>DPF — regeneração forçada</li>
+            <li>Reset/adaptação de injetores, dependendo do veículo</li>
+            <li>TPMS — procedimentos de reaprendizado</li>
+            <li>Algumas funções de imobilizador/IMMO</li>
+            <li>Identificação automática do veículo pelo VIN</li>
+          </ul>
+          </div>
+
+        <div class="tech__card tech__slide" data-tech-slide>
+          <header class="tech__head">
+            <svg class="tech__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            <div>
+              <h3>Equipamentos</h3>
+              <p>O que a oficina tem</p>
+            </div>
+          </header>
+          <ul class="tech__list">
+            <li>Elevador hidráulico 3,5 toneladas</li>
+            <li>Girafa hidráulica para remoção de motor</li>
+            <li>Macaco telescópico para remoção de transmissão</li>
+            <li>Máquina de limpeza e teste de bicos injetores</li>
+            <li>Ferramentas para diagnóstico de arrefecimento</li>
+            <li>Diagnóstico do sistema de alimentação de combustível — bomba de baixa pressão</li>
+            <li>Máquina de fumaça para identificação de vazamento de ar — admissão ou escapamento</li>
+          </ul>
+          </div>
+          </div>
+          <button type="button" class="tech__arrow tech__arrow--next" data-tech-next aria-label="Próximo bloco">→</button>
+        </div>
+
+        <div class="tech__dots">
+          <button type="button" class="tech__dot is-on" data-tech-dot aria-label="Mostrar Scanner Autel MK 808s"></button>
+          <button type="button" class="tech__dot" data-tech-dot aria-label="Mostrar Equipamentos"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="a-oficina" aria-labelledby="aboutTitle">
+      <div class="section-head reveal">
+        <h2 id="aboutTitle">Experiência que aparece no serviço</h2>
+        <h3 id="aboutSub">Quem está cuidando do seu veículo?</h3>
+      </div>
+      <div class="about__grid">
+        <figure class="plate plate--wide reveal">
+          <img loading="lazy" src="/owner-landscape.jpeg" alt="Proprietário da Francar trabalhando na bancada da oficina" />
+          <figcaption>Cuidado do diagnóstico à entrega.</figcaption>
+        </figure>
+        <figure class="plate reveal">
+          <img loading="lazy" src="/owner-portrait.jpeg" alt="Retrato do proprietário da Francar na oficina" />
+          <figcaption>Franciedson Cardoso.</figcaption>
+        </figure>
+      </div>
+      <p class="about__text reveal">São 7 anos de experiência na profissão, com formação técnica pelo senai em manutenção automotiva e cursos realizados em montadoras como Mercedes-Benz e Honda, incluindo elétrica e sistemas híbridos.</p>
+    </section>
+
+    <section class="contact" id="contato" aria-labelledby="contactTitle">
+      <div class="contact__inner">
+        <h2 class="reveal" id="contactTitle">Seu carro precisa de atenção?</h2>
+        <p class="contact__sub reveal">Conte pelo WhatsApp o modelo, o ano e o que está acontecendo. A gente orienta você e combina a melhor forma de avaliar o veículo.</p>
+        <div class="contact__cta reveal">
+          <a class="btn btn--big" href="#" data-wa><svg class="btn__ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg> Chamar no WhatsApp</a>
+          <a class="btn btn--big btn--ghost" href="https://maps.app.goo.gl/RAbEsZYw9mpFnZXZ9" target="_blank" rel="noopener">📍 Onde estamos localizados</a>
+          <span class="contact__note" id="waNote" hidden>Número de WhatsApp a confirmar.</span>
+        </div>
+        <dl class="contact__info reveal">
+          <div><dt>Atendimento</dt><dd>Seg – Sex, 08h às 19h<br />Sáb, 08h às 12h <br /> Dom fechado</dd></div>
+          <div><dt>Telefone</dt><dd data-wa-text>(63) 00000-0000</dd></div>
+          <div><dt>Endereço</dt><dd>Q. 812 Sul, Alameda 1, 437 – Arse<br />Palmas – TO, 77023-132</dd></div>
+        </dl>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__brand"><span class="brand__logo"><img src="/logo.jpeg" alt="" /></span><span class="brand__name">Francar</span></p>
+      <p class="footer__note">Diagnóstico certo. Serviço bem feito.</p>
+      <p class="footer__copy">© <span id="year">2026</span> Francar</p>
+    </div>
+  </footer>
+
+  <button class="totop" id="toTop" hidden type="button" aria-label="Voltar ao topo">↑</button>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
