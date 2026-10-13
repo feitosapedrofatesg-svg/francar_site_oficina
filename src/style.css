@@ -688,3 +688,14 @@ a, button { touch-action: manipulation; }
 @media (max-width: 760px) {
   .header .btn--small { display: none; }
 }
+
+@media (max-width: 760px) {
+  .cine__stage { height: auto; max-height: none; overflow: visible; }
+  .cine__canvas, .cine__video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  .cine__meta { position: relative; inset: auto; padding: 0 16px 24px; }
+  .cine__meta::after { display: none; }
+  .cine__scene { position: relative; left: auto; right: auto; bottom: auto; }
+  .cine__label { position: relative; margin-top: -16px; vertical-align: top; }
+  .cine__big { margin-top: 14px; }
+  .cine__sub { margin-top: 10px; }
+}

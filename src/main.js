@@ -144,7 +144,7 @@ function makeCanvas() {
   sizeCanvas();
   window.addEventListener("resize", () => {
     const nw = Math.max(1, stage.clientWidth);
-    const nh = Math.max(1, stage.clientHeight);
+    const nh = mobile ? Math.round(nw * 9 / 16) : Math.max(1, stage.clientHeight);
     if (nw === vw && nh === vh) return;
     sizeCanvas();
     if (lastIdx >= 0) requestPaint();
@@ -153,7 +153,7 @@ function makeCanvas() {
 
 function sizeCanvas() {
   vw = Math.max(1, stage.clientWidth);
-  vh = Math.max(1, stage.clientHeight);
+  vh = mobile ? Math.round(vw * 9 / 16) : Math.max(1, stage.clientHeight);
   dpr = mobile ? Math.min(2, window.devicePixelRatio || 1) : window.devicePixelRatio || 1;
   canvas.width = Math.round(vw * dpr);
   canvas.height = Math.round(vh * dpr);
