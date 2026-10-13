@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Francar · Oficina mecânica</title>
   <meta name="description" content="Oficina mecânica com diagnóstico primeiro. Reparo de motor, suspensão, freios e revisão — consulte pelo WhatsApp." />
   <meta property="og:type" content="website" />
@@ -98,7 +98,7 @@
 
     <section class="cine" id="bancada" aria-label="A bancada em movimento">
       <div class="cine__stage">
-        <video class="cine__video" id="cineVideo" muted loop playsinline preload="auto" poster="/owner-landscape.jpeg" tabindex="-1" aria-hidden="true" disablePictureInPicture>
+        <video class="cine__video" id="cineVideo" muted loop playsinline preload="none" poster="/owner-landscape.jpeg" tabindex="-1" aria-hidden="true" disablePictureInPicture>
           <source src="/motor.mp4" type="video/mp4" />
         </video>
         <div class="cine__loader" id="cineLoader" hidden>
@@ -125,6 +125,7 @@
       <div class="section-head reveal">
         <h2 id="servicosTitle">Serviços para cuidar do seu carro</h2>
         <p>Do diagnóstico à manutenção, cada serviço é feito com atenção ao que o veículo realmente precisa.</p>
+        <p class="mobile-specialty">Especialistas em Honda. Também atendemos Toyota, Hyundai, Chevrolet, Fiat, Jeep, Volkswagen e outras marcas.</p>
       </div>
       <ul class="services__list">
         <li class="service reveal">
@@ -273,6 +274,13 @@
       <p class="footer__copy">© <span id="year">2026</span> Francar</p>
     </div>
   </footer>
+
+  <nav class="mobile-nav" aria-label="Atalhos no celular">
+    <a href="#servicos">Serviços</a>
+    <a href="#tecnologias">Tecnologias</a>
+    <a href="#contato">Contato</a>
+    <a class="mobile-nav__wa" href="#" data-wa>WhatsApp ↗</a>
+  </nav>
 
   <button class="totop" id="toTop" hidden type="button" aria-label="Voltar ao topo">↑</button>
 

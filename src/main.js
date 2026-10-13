@@ -4,6 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const q = (sel) => document.querySelector(sel);
 const qAll = (sel) => [...document.querySelectorAll(sel)];
 
+const mobile = window.matchMedia("(max-width: 760px)").matches;
+
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ---------------------------------------------------------
@@ -375,7 +377,7 @@ function captureFrames() {
 
 /* Pré-carrega todos os frames antes do scrub ficar ativo. */
 async function initScrub() {
-  if (reduced || scrubReady || video.readyState < 2) return;
+  if (mobile || reduced || scrubReady || video.readyState < 2) return;
   scrubReady = true;
   try { video.pause(); } catch (err) {}
   cineLoader.hidden = false;
@@ -437,7 +439,22 @@ async function initScrub() {
   };
 }
 
-video.addEventListener("canplay", initScrub, { once: true });
+// Mobile uses native playback instead of capturing hundreds of full-size frames.
+if (mobile && !reduced) {
+  video.controls = true;
+  video.removeAttribute("aria-hidden");
+  video.removeAttribute("tabindex");
+  video.setAttribute("aria-label", "Motor na bancada da Francar");
+  video.addEventListener("timeupdate", () => status(video.currentTime));
+  const videoObserver = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) video.pause();
+  });
+  videoObserver.observe(video);
+} else if (!reduced) {
+  video.preload = "auto";
+  video.addEventListener("canplay", initScrub, { once: true });
+  if (video.readyState >= 2) initScrub();
+}
 
 /* -------- Scroll: progresso global + botão "voltar ao topo" ---------- */
 
@@ -448,7 +465,7 @@ const heroEl = q(".hero");
 const plates = qAll(".plate");
 
 function parallax() {
-  if (reduced) return;
+  if (reduced || mobile) return;
   if (heroFx) {
     const f = Math.min(1, Math.max(0, window.scrollY / (heroEl ? heroEl.offsetHeight : 1)));
     heroFx.style.transform = `translate3d(0, ${(-f * 70).toFixed(1)}px, 0)`;
@@ -549,3 +566,4 @@ techDots.forEach((d, i) =>
     paintTech();
   })
 );
+paintTech();
