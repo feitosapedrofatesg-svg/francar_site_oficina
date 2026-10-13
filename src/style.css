@@ -662,3 +662,8 @@ a, button { touch-action: manipulation; }
   .cine__sub { color: var(--paper); text-shadow: 0 1px 10px rgba(0,0,0,.7); }
   .footer__inner { padding-right: 90px; }
 }
+
+.cine__play { display: none; }
+@media (max-width: 760px) {
+  .cine__play { display: block; align-self: flex-start; min-height: 44px; margin: 16px 18px 0; padding: 10px 18px; background: var(--orange); color: var(--black); font-weight: 700; }
+}

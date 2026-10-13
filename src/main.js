@@ -420,7 +420,17 @@ async function initScrub() {
 
 // Mobile uses native playback instead of capturing hundreds of full-size frames.
 if (mobile && !reduced) {
-  video.controls = true;
+  const playButton = q(".cine__play");
+  playButton.addEventListener("click", async () => {
+    if (!video.paused) { video.pause(); return; }
+    try { await video.play(); } catch { playButton.textContent = "Tentar reproduzir"; }
+  });
+  const updatePlayback = () => {
+    playButton.textContent = video.paused ? "Reproduzir vídeo" : "Pausar vídeo";
+    playButton.setAttribute("aria-pressed", String(!video.paused));
+  };
+  video.addEventListener("play", updatePlayback);
+  video.addEventListener("pause", updatePlayback);
   video.removeAttribute("aria-hidden");
   video.removeAttribute("tabindex");
   video.setAttribute("aria-label", "Motor na bancada da Francar");
