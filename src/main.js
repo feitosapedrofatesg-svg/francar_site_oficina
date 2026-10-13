@@ -42,12 +42,6 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
    Status de scroll — barra de progresso
    --------------------------------------------------------- */
 const progress = q("#progress");
-const backTop = q(".back-top");
-const bottomNav = q(".mobile-nav");
-new ResizeObserver(() => {
-  document.documentElement.style.setProperty("--bottom-nav-height", `${bottomNav.getBoundingClientRect().height}px`);
-}).observe(bottomNav);
-backTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" }));
 
 function setGlobalProgress() {
   const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -477,7 +471,6 @@ function onScroll() {
   requestAnimationFrame(() => {
     ticking = false;
     setGlobalProgress();
-    backTop.hidden = window.scrollY < 1200;
     parallax();
 
   });
