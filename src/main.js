@@ -270,7 +270,7 @@ function nearestPaintable(i) {
   return null;
 }
 
-/* DrawImage com corte central (object-fit: cover), smoothing high,
+/* Mobile preserves the full frame (contain); desktop fills the stage (cover).
    resolução nativa do vídeo × DPR. Um único drawImage por paint. */
 function paint() {
   if (!ctx2d || lastIdx < 0) return;
@@ -278,7 +278,9 @@ function paint() {
   let bmp = bitCache.get(i);
   if (!bmp) bmp = nearestPaintable(i);
   if (!bmp) return;
-  const scale = Math.max(vw / bmp.width, vh / bmp.height);
+  const scale = window.matchMedia("(max-width: 760px)").matches
+    ? Math.min(vw / bmp.width, vh / bmp.height)
+    : Math.max(vw / bmp.width, vh / bmp.height);
   const dw = bmp.width * scale;
   const dh = bmp.height * scale;
   ctx2d.imageSmoothingEnabled = true;

@@ -669,14 +669,15 @@ a, button { touch-action: manipulation; }
   .cine { height: 330svh; }
   .cine__stage {
     position: sticky; top: calc(64px + env(safe-area-inset-top));
-    height: calc(100svh - 128px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-    min-height: 320px; display: block;
+    height: clamp(300px, 85vw, 420px);
+    max-height: calc(100svh - 128px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    min-height: 0; display: block;
   }
-  .cine__video { width: 100%; height: 100%; aspect-ratio: auto; }
+  .cine__video { width: 100%; height: 100%; aspect-ratio: auto; object-fit: contain; }
   .cine__meta { position: absolute; inset: 0; padding: 0; }
   .cine__meta::after { display: block; height: 80%; background: linear-gradient(transparent, rgba(0,0,0,.88)); }
-  .cine__scene { position: absolute; left: 20px; right: 20px; bottom: 28px; z-index: 1; }
-  .cine__big { line-height: 1.2; }
+  .cine__scene { position: absolute; left: 16px; right: 16px; bottom: 16px; z-index: 1; }
+  .cine__big { font-size: clamp(22px, 6vw, 28px); line-height: 1.2; margin-top: 10px; }
   .cine__sub { color: var(--paper); font-size: 16px; text-shadow: 0 1px 10px rgba(0,0,0,.7); }
 }
 @media (prefers-reduced-motion: reduce) and (max-width: 760px) {
