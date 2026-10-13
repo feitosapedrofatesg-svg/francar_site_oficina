@@ -122,11 +122,11 @@ button { font: inherit; background: none; border: 0; color: inherit; cursor: poi
 .hero__title {
   font-family: "Anton", sans-serif;
   font-size: clamp(44px, 9vw, 96px);
-  line-height: 0.98;
+  line-height: 1.2;
   letter-spacing: 0.01em;
   text-transform: uppercase;
 }
-.js .hero__title span.rise { display: inline-block; overflow: hidden; vertical-align: top; }
+.js .hero__title span.rise { display: inline-block; vertical-align: top; }
 .hero__sub {
   max-width: 620px; margin: 24px auto 0;
   color: var(--steel); font-size: 18px;
@@ -208,18 +208,7 @@ button { font: inherit; background: none; border: 0; color: inherit; cursor: poi
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.62));
   pointer-events: none;
 }
-.cine__num {
-  position: absolute; left: -10px; bottom: -8px;
-  font-family: "Anton", sans-serif;
-  font-size: clamp(200px, 30vw, 460px);
-  line-height: 1;
-  color: var(--orange-bright);
-  opacity: 0.42;
-  text-shadow:
-    0 2px 0 rgba(0, 0, 0, 0.55),
-    0 10px 70px rgba(0, 0, 0, 0.7),
-    0 0 40px rgba(240, 87, 31, 0.35);
-}
+
 .cine__scene {
   position: absolute;
   left: clamp(24px, 6vw, 72px);
@@ -244,7 +233,7 @@ button { font: inherit; background: none; border: 0; color: inherit; cursor: poi
   margin-top: 16px;
   font-family: "Anton", sans-serif;
   font-size: clamp(30px, 4.8vw, 60px);
-  line-height: 1.02;
+  line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 0.01em;
   color: #fff;
@@ -258,18 +247,6 @@ button { font: inherit; background: none; border: 0; color: inherit; cursor: poi
   font-weight: 500;
   text-shadow: 0 1px 10px rgba(255, 255, 255, 0.5);
 }
-.cine__side {
-  position: absolute;
-  right: clamp(20px, 4vw, 48px);
-  bottom: clamp(26px, 5vw, 56px);
-  display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
-  font-family: "Anton", sans-serif;
-  text-transform: uppercase;
-  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.7);
-}
-.cine__side #cineTime { font-variant-numeric: tabular-nums; font-size: 14px; color: var(--steel); }
-.cine__count { font-size: clamp(28px, 4vw, 42px); line-height: 1; color: var(--paper); }
-.cine__count .tick, .cine__side .tick { color: var(--orange); }
 
 /* troca de ato com fade/stagger */
 @keyframes cineUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
@@ -277,14 +254,13 @@ button { font: inherit; background: none; border: 0; color: inherit; cursor: poi
 .cine__scene.is-swap .cine__label { animation: cineUp 0.55s ease both; }
 .cine__scene.is-swap .cine__big { animation: cineUp 0.55s 0.07s ease both; }
 .cine__scene.is-swap .cine__sub { animation: cineUp 0.55s 0.14s ease both; }
-.cine__meta.is-swap .cine__num { animation: cineZoom 0.7s ease both; }
 
 /* ---------------------------------------------------------- sections base */
 .section-head { max-width: 720px; }
 .section-head h2 {
   font-family: "Anton", sans-serif;
   font-size: clamp(34px, 6vw, 60px);
-  line-height: 1;
+  line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 0.01em;
 }
@@ -318,7 +294,7 @@ button { font: inherit; background: none; border: 0; color: inherit; cursor: poi
 .service h3 {
   font-family: "Anton", sans-serif;
   font-size: clamp(24px, 3.4vw, 38px);
-  line-height: 1.02;
+  line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 0.01em;
 }
@@ -383,7 +359,7 @@ button { font: inherit; background: none; border: 0; color: inherit; cursor: poi
 .tech__head h3 {
   font-family: "Anton", sans-serif;
   font-size: clamp(24px, 3vw, 36px);
-  line-height: 1;
+  line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 0.01em;
 }
@@ -454,7 +430,7 @@ button { font: inherit; background: none; border: 0; color: inherit; cursor: poi
 .contact h2 {
   font-family: "Anton", sans-serif;
   font-size: clamp(40px, 7vw, 72px);
-  line-height: 1;
+  line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 0.01em;
 }
@@ -492,18 +468,6 @@ button { font: inherit; background: none; border: 0; color: inherit; cursor: poi
 .footer__note { color: var(--steel); font-size: 14px; }
 .footer__copy { margin-left: auto; color: var(--steel); font-size: 13px; }
 
-/* ---------------------------------------------------------- totop */
-.totop {
-  position: fixed; right: 20px; bottom: 20px; z-index: 80;
-  width: 48px; height: 48px;
-  display: grid; place-items: center;
-  background: var(--orange); color: var(--black);
-  font-size: 20px; font-weight: 700;
-  transition: background 0.18s ease;
-}
-.totop:hover { background: var(--orange-bright); }
-.totop[hidden] { display: none; }
-
 /* ---------------------------------------------------------- reveal */
 .js .reveal { opacity: 0; transform: translateY(22px); }
 .js .reveal.is-in { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -515,8 +479,8 @@ button { font: inherit; background: none; border: 0; color: inherit; cursor: poi
   .cine { height: 100dvh; }
   .marquee__track { animation: none; }
   .cine__scene.is-swap .cine__label, .cine__scene.is-swap .cine__big,
-  .cine__scene.is-swap .cine__sub, .cine__meta.is-swap .cine__num { animation: none; }
-  .service, .btn, .nav a, .totop { transition: none; }
+  .cine__scene.is-swap .cine__sub { animation: none; }
+  .service, .btn, .nav a { transition: none; }
 }
 
 /* ---------------------------------------------------------- responsive */
@@ -606,25 +570,15 @@ button { font: inherit; background: none; border: 0; color: inherit; cursor: poi
   .cine { height: auto; }
   .cine__stage { height: 100dvh; height: 100dvh; }
   .cine__tag { left: 16px; top: 16px; font-size: 12px; }
-  .cine__num { font-size: clamp(92px, 32vw, 150px); left: 4px; bottom: -8px; }
   .cine__scene { left: 16px; right: 16px; bottom: 16px; max-width: none; }
   .cine__label { padding: 6px 12px; font-size: 12px; letter-spacing: 0.16em; }
   .cine__big { font-size: clamp(26px, 7.6vw, 34px); margin-top: 12px; }
   .cine__sub { font-size: 13.5px; margin-top: 10px; }
-  .cine__side { right: 16px; bottom: auto; top: 20px; align-items: flex-end; }
-  .cine__side #cineTime { font-size: 12.5px; }
-  .cine__count { font-size: clamp(24px, 6.4vw, 30px); }
 
   /* marquee */
   .marquee { margin-top: 36px; padding: 14px 0; }
   .marquee__phrase { padding-right: 40px; }
 
-  /* totop */
-  .totop {
-    width: 46px; height: 46px;
-    right: 14px;
-    bottom: calc(14px + env(safe-area-inset-bottom));
-  }
 }
 
 @media (max-width: 420px) {
@@ -648,14 +602,7 @@ a, button { touch-action: manipulation; }
 .tech__dot::after { content: ""; position: absolute; inset: 17px; border-radius: 50%; background: rgba(255,255,255,.3); }
 .tech__dot.is-on { background: transparent; transform: none; }
 .tech__dot.is-on::after { background: var(--orange); }
-.totop { bottom: calc(20px + env(safe-area-inset-bottom)); }
-@media (hover: none) {
-  .service:hover { background: transparent; }
-  .service:hover .service__mark { transform: none; background: var(--orange); }
-  .service:hover p { color: var(--muted-ink); }
-  .btn:hover { background: var(--orange); }
-  .btn--ghost:hover { background: transparent; color: var(--steel); }
-}
+
 @media (max-width: 760px) {
   html { scroll-padding-top: 84px; }
   body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
@@ -663,7 +610,7 @@ a, button { touch-action: manipulation; }
   .header .nav { display: none; }
   .header .btn--small { margin-left: auto; min-height: 44px; }
   .hero { padding-top: 30px; }
-  .hero__title { line-height: 1.08; overflow-wrap: anywhere; }
+  .hero__title { line-height: 1.2; overflow-wrap: anywhere; }
   .hero__title br { display: none; }
   .hero__logo { margin-bottom: 20px; }
   .hero__actions { margin-top: 24px; }
@@ -680,15 +627,14 @@ a, button { touch-action: manipulation; }
   .mobile-nav a { display: flex; align-items: center; justify-content: center; min-height: 48px; min-width: 0; font-size: 12px; font-weight: 600; border-radius: 4px; }
   .mobile-nav__wa { background: var(--orange); color: var(--black); }
   .mobile-nav a:active { background: var(--char); color: var(--paper); }
-  .totop { bottom: calc(84px + env(safe-area-inset-bottom)); }
   .tech__dot { width: 44px; height: 44px; }
   .tech__head > div { min-width: 0; }
-  .tech__head h3 { overflow-wrap: anywhere; line-height: 1.15; }
+  .tech__head h3 { overflow-wrap: anywhere; line-height: 1.2; }
   .cine { height: auto; }
   .cine__stage { position: relative; height: auto; display: flex; flex-direction: column; }
   .cine__video { height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
   .cine__meta { position: relative; padding: 24px 18px; }
-  .cine__meta::after, .cine__num, .cine__tag, .cine__side { display: none; }
+  .cine__meta::after, .cine__tag { display: none; }
   .cine__scene { position: static; }
   .cine__big { font-size: clamp(26px, 7vw, 34px); }
   .cine__sub { color: var(--steel); font-size: 16px; text-shadow: none; }
@@ -714,6 +660,5 @@ a, button { touch-action: manipulation; }
 }
 @media (min-width: 761px) {
   .cine__sub { color: var(--paper); text-shadow: 0 1px 10px rgba(0,0,0,.7); }
-  .cine__num { opacity: .8; }
   .footer__inner { padding-right: 90px; }
 }

@@ -42,7 +42,6 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
    Status de scroll — barra de progresso
    --------------------------------------------------------- */
 const progress = q("#progress");
-const toTop = q("#toTop");
 
 function setGlobalProgress() {
   const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -61,30 +60,24 @@ function setGlobalProgress() {
 const cine = q(".cine");
 const stage = q(".cine__stage");
 const video = q("#cineVideo");
-const cineTime = q("#cineTime");
 const cineFallback = q("#cineFallback");
 const cineLoader = q("#cineLoader");
-const cineNum = q("#cineNum");
 const cineLabel = q("#cineLabel");
 const cineBig = q("#cineBig");
 const cineSub = q("#cineSub");
-const cineCount = q("#cineCount");
 
 const STAGES = [
   [0, 0.33, {
-    num: "01",
     label: "Diagnóstico",
     big: "Antes de trocar peça, a gente descobre o problema.",
     sub: "Leitura, teste e análise para chegar na causa certa.",
   }],
   [0.33, 0.66, {
-    num: "02",
     label: "Bancada",
     big: "É aqui que o serviço acontece de verdade.",
     sub: "Motor aberto, peça por peça, medida por medida, sem atalho.",
   }],
   [0.66, 1, {
-    num: "03",
     label: "Entrega",
     big: "Não sai da oficina sem está pronto.",
     sub: "Montagem, conferência e teste final antes de voltar para a rua.",
@@ -92,7 +85,6 @@ const STAGES = [
 ];
 
 let dur = 0;
-let lastLabel = -1;
 let lastStage = -1;
 let seq = [];
 let canvas = null;
@@ -104,13 +96,6 @@ let dpr = 1;
 let scrubReady = false;
 let frameTime = (i) =>
   dur > 0 && seq.length > 1 ? (i / (seq.length - 1)) * dur : 0;
-
-function fmt(t) {
-  if (!Number.isFinite(t)) t = 0;
-  const m = Math.floor(t / 60);
-  const s = Math.floor(t % 60);
-  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
-}
 
 function setStageFor(t) {
   const fraction = dur > 0 ? t / dur : 0;
@@ -125,11 +110,9 @@ function setStageFor(t) {
   if (found === -1 || found === lastStage) return;
   lastStage = found;
   const s = STAGES[found][2];
-  cineNum.textContent = s.num;
   cineLabel.textContent = s.label;
   cineBig.textContent = s.big;
   cineSub.textContent = s.sub;
-  cineCount.textContent = `${s.num} / ${String(STAGES.length).padStart(2, "0")}`;
   qAll(".cine__meta, .cine__scene").forEach((el) => {
     el.classList.remove("is-swap");
     void el.offsetWidth;
@@ -138,20 +121,16 @@ function setStageFor(t) {
 }
 
 function status(sec) {
-  if (Math.abs(sec - lastLabel) > 0.025) {
-    lastLabel = sec;
-    cineTime.textContent = `${fmt(sec)} / ${fmt(dur)}`;
-  }
   setStageFor(sec);
 }
 
 video.addEventListener("loadedmetadata", () => {
   dur = video.duration;
-  cineTime.textContent = `${fmt(0)} / ${fmt(dur)}`;
+
 });
 video.addEventListener("error", () => {
   cineFallback.hidden = false;
-  cineTime.textContent = "vídeo indisponível";
+
 });
 
 /* Canvas: viewport × DPR (sem cap) — backing store em resolução real. */
@@ -392,12 +371,12 @@ async function initScrub() {
     try { video.style.visibility = ""; } catch (err) {}
     video.style.display = "";
     cineFallback.hidden = false;
-    cineTime.textContent = "vídeo indisponível";
+
     return;
   }
   seq = frames;
   dur = video.duration;
-  cineTime.textContent = `${fmt(0)} / ${fmt(dur)}`;
+
   makeCanvas();
   video.style.display = "none";
   cineLoader.hidden = true;
@@ -456,7 +435,7 @@ if (mobile && !reduced) {
   if (video.readyState >= 2) initScrub();
 }
 
-/* -------- Scroll: progresso global + botão "voltar ao topo" ---------- */
+/* -------- Scroll: progresso global ---------- */
 
 /* Parallax sutil: o conteúdo do hero deriva suavemente ao sair da tela e
    as fotos da oficina se movem dentro da moldura (corte central). */
@@ -488,18 +467,13 @@ function onScroll() {
     ticking = false;
     setGlobalProgress();
     parallax();
-    toTop.hidden = window.scrollY < 1200;
+
   });
 }
 
 window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", onScroll, { passive: true });
 onScroll();
-
-/* ---------------------------------------------------------
-   Retorna ao topo
-   --------------------------------------------------------- */
-toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" }));
 
 /* ---------------------------------------------------------
    Entrada única do hero
