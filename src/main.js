@@ -42,6 +42,12 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
    Status de scroll — barra de progresso
    --------------------------------------------------------- */
 const progress = q("#progress");
+const backTop = q(".back-top");
+const bottomNav = q(".mobile-nav");
+new ResizeObserver(() => {
+  document.documentElement.style.setProperty("--bottom-nav-height", `${bottomNav.getBoundingClientRect().height}px`);
+}).observe(bottomNav);
+backTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" }));
 
 function setGlobalProgress() {
   const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -79,7 +85,7 @@ const STAGES = [
   }],
   [0.66, 1, {
     label: "Entrega",
-    big: "Não sai da oficina sem está pronto.",
+    big: "Não sai da oficina sem estar pronto.",
     sub: "Montagem, conferência e teste final antes de voltar para a rua.",
   }],
 ];
@@ -154,7 +160,7 @@ function makeCanvas() {
 function sizeCanvas() {
   vw = Math.max(1, stage.clientWidth);
   vh = Math.max(1, stage.clientHeight);
-  dpr = window.devicePixelRatio || 1;
+  dpr = mobile ? Math.min(2, window.devicePixelRatio || 1) : window.devicePixelRatio || 1;
   canvas.width = Math.round(vw * dpr);
   canvas.height = Math.round(vh * dpr);
 }
@@ -356,14 +362,25 @@ function captureFrames() {
 
 /* Pré-carrega todos os frames antes do scrub ficar ativo. */
 async function initScrub() {
-  if (mobile || reduced || scrubReady || video.readyState < 2) return;
+  if (reduced || scrubReady || (!mobile && video.readyState < 2)) return;
   scrubReady = true;
   try { video.pause(); } catch (err) {}
   cineLoader.hidden = false;
   try { video.style.visibility = "hidden"; } catch (err) {}
 
   let frames = [];
-  try { frames = await captureFrames(); } catch (err) {}
+  try {
+    if (mobile) {
+      const response = await fetch("/motor-frames/manifest.json");
+      if (!response.ok) throw new Error("Frames indisponíveis");
+      const manifest = await response.json();
+      dur = manifest.duration;
+      frames = Array.from({ length: manifest.count }, (_, i) =>
+        `/motor-frames/${String(i).padStart(3, "0")}.jpg`);
+    } else {
+      frames = await captureFrames();
+    }
+  } catch (err) {}
   try { video.pause(); } catch (err) {}
 
   if (frames.length < 12) {
@@ -375,7 +392,7 @@ async function initScrub() {
     return;
   }
   seq = frames;
-  dur = video.duration;
+  if (!mobile) dur = video.duration;
 
   makeCanvas();
   video.style.display = "none";
@@ -391,7 +408,7 @@ async function initScrub() {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: cine,
-      start: "top top",
+      start: mobile ? "top 64px" : "top top",
       end: "bottom bottom",
       scrub: true,
       onUpdate: () => status(frameTime(proxy.i)),
@@ -418,31 +435,15 @@ async function initScrub() {
   };
 }
 
-// Mobile uses native playback instead of capturing hundreds of full-size frames.
-if (mobile && !reduced) {
-  const playButton = q(".cine__play");
-  playButton.addEventListener("click", async () => {
-    if (!video.paused) { video.pause(); return; }
-    try { await video.play(); } catch { playButton.textContent = "Tentar reproduzir"; }
-  });
-  const updatePlayback = () => {
-    playButton.textContent = video.paused ? "Reproduzir vídeo" : "Pausar vídeo";
-    playButton.setAttribute("aria-pressed", String(!video.paused));
-  };
-  video.addEventListener("play", updatePlayback);
-  video.addEventListener("pause", updatePlayback);
-  video.removeAttribute("aria-hidden");
-  video.removeAttribute("tabindex");
-  video.setAttribute("aria-label", "Motor na bancada da Francar");
-  video.addEventListener("timeupdate", () => status(video.currentTime));
-  const videoObserver = new IntersectionObserver(([entry]) => {
-    if (!entry.isIntersecting) video.pause();
-  });
-  videoObserver.observe(video);
-} else if (!reduced) {
-  video.preload = "auto";
-  video.addEventListener("canplay", initScrub, { once: true });
-  if (video.readyState >= 2) initScrub();
+// Mobile uses pre-rendered frames: scroll drives the image in both directions.
+if (!reduced) {
+  if (mobile) {
+    initScrub();
+  } else {
+    video.preload = "auto";
+    video.addEventListener("canplay", initScrub, { once: true });
+    if (video.readyState >= 2) initScrub();
+  }
 }
 
 /* -------- Scroll: progresso global ---------- */
@@ -476,6 +477,7 @@ function onScroll() {
   requestAnimationFrame(() => {
     ticking = false;
     setGlobalProgress();
+    backTop.hidden = window.scrollY < 1200;
     parallax();
 
   });
@@ -532,16 +534,22 @@ function paintTech() {
   });
 }
 
+function scrollToTechTitle() {
+  q("#techTitle").scrollIntoView({ block: "start", behavior: reduced ? "instant" : "smooth" });
+}
+
 if (techPrev) {
   techPrev.addEventListener("click", () => {
     techIdx = (techIdx - 1 + techSlides.length) % techSlides.length;
     paintTech();
+    scrollToTechTitle();
   });
 }
 if (techNext) {
   techNext.addEventListener("click", () => {
     techIdx = (techIdx + 1) % techSlides.length;
     paintTech();
+    scrollToTechTitle();
   });
 }
 techDots.forEach((d, i) =>

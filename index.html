@@ -101,13 +101,12 @@
         <video class="cine__video" id="cineVideo" muted loop playsinline preload="none" poster="/owner-landscape.jpeg" tabindex="-1" aria-hidden="true" disablePictureInPicture>
           <source src="/motor.mp4" type="video/mp4" />
         </video>
-        <button class="cine__play" type="button" aria-controls="cineVideo" aria-pressed="false">Reproduzir vídeo</button>
         <div class="cine__loader" id="cineLoader" hidden>
           <span class="cine__loader__chip">Preparando a animação</span>
         </div>
         <p class="cine__fallback" id="cineFallback" hidden>O vídeo não carregou — a bancada, em foto.</p>
         <p class="cine__tag" id="cineTag">Role para explorar</p>
-        <div class="cine__meta" aria-hidden="true">
+        <div class="cine__meta">
           <div class="cine__scene">
             <p class="cine__label" id="cineLabel">Diagnóstico</p>
             <p class="cine__big" id="cineBig">Antes de trocar peça, a gente descobre o problema.</p>
@@ -278,6 +277,8 @@
     <a class="mobile-nav__wa" href="#" data-wa>WhatsApp ↗</a>
   </nav>
 
+
+  <button class="back-top" type="button" aria-label="Voltar ao topo" hidden>↑</button>
 
   <script type="module" src="/src/main.js"></script>
 </body>
